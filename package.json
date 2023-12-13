@@ -6,34 +6,62 @@
   "main": "desktop/index.js",
   "sideEffects": false,
   "scripts": {
-    "dev": "remix dev --command \"nodemon .\" --manual",
+    "dev": "remix dev --manual -c \"node --watch-path server.cjs --watch server.cjs\" --command \"nodemon .\"",
     "build": "remix build && electron-builder",
     "start": "electron ."
   },
   "build": {
+    "mac": {
+      "hardenedRuntime": true,
+      "entitlements": "entitlements.mac.plist",
+      "extendInfo": {
+        "NSMicrophoneUsageDescription": "Please give us access to your microphone",
+        "NSCameraUsageDescription": "Please give us access to your camera",
+        "com.apple.security.device.audio-input": true,
+        "com.apple.security.device.camera": true
+      }
+    },
     "files": [
+      "!build-assets${/*}",
+      "remix-electron-setup",
       "build",
       "desktop",
       "public",
       "remix.config.js"
-    ]
+    ],
+    "forceCodeSigning": true
   },
   "dependencies": {
+    "@remix-run/css-bundle": "^2.3.1",
+    "@remix-run/express": "^2.3.1",
     "@remix-run/node": "^2.1.0",
     "@remix-run/react": "^2.1.0",
+    "@yudiel/react-qr-scanner": "^1.2.4",
+    "compression": "^1.7.4",
+    "cross-env": "^7.0.3",
+    "express": "^4.18.2",
     "isbot": "^3.7.0",
+    "morgan": "^1.10.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "remix-electron": "^2.0.0"
+    "remix-electron": "^2.0.0",
+    "electron-devtools-installer": "^3.2.0",
+    "source-map-support": "^0.5.21"
   },
   "devDependencies": {
     "@remix-run/dev": "^2.1.0",
+    "@remix-run/eslint-config": "^2.3.1",
     "@remix-run/serve": "^2.1.0",
+    "@types/compression": "^1.7.2",
+    "@types/express": "^4.17.17",
+    "@types/morgan": "^1.9.4",
     "@types/react": "^18.2.31",
     "@types/react-dom": "^18.2.14",
+    "@types/source-map-support": "^0.5.6",
+    "chokidar": "^3.5.3",
     "electron": "^27.0.2",
     "electron-builder": "^24.6.4",
-    "electron-devtools-installer": "^3.2.0",
+    "eslint": "^8.38.0",
     "nodemon": "^3.0.1",
     "typescript": "^5.2.2"
   }
