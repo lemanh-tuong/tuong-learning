@@ -1,0 +1,8 @@
+@import './readonly.css';
+
+.DatePickerSingle__container {
+  position: relative;
+}
+.DatePickerSingle__container .ant-picker {
+  width: 100%;
+}

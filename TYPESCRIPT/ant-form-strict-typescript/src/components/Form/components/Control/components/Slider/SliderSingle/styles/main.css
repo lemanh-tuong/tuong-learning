@@ -1,0 +1,12 @@
+@import "./status/error.css";
+@import "./status/warning.css";
+@import "./readonly.css";
+
+.SliderSingle__container {
+  position: relative;
+  height: 100%;
+}
+
+.SliderSingle__container .ant-input-number {
+  width: 100%;
+}

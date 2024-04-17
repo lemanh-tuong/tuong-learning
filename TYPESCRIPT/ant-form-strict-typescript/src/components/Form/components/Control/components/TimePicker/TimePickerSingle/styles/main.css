@@ -1,0 +1,8 @@
+@import "./readonly.css";
+
+.TimePickerSingle__container {
+  position: relative;
+}
+.TimePickerSingle__container .ant-picker {
+  width: 100%;
+}

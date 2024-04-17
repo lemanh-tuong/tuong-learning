@@ -1,0 +1,9 @@
+@import './readonly.css';
+
+.SelectSingle__container {
+  width: 100%;
+}
+
+.SelectSingle__option .SelectSingle__option-label {
+  height: 100% !important;
+}
